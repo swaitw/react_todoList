@@ -12,7 +12,7 @@ class TodoInput extends Component {
       }
 
     constructor (props) {
-        super (props) 
+        super (props)
         this.state={
             taskTitle:'',
             taskDescrp:''
@@ -34,17 +34,18 @@ class TodoInput extends Component {
     handleSubmit (event) {
         event.preventDefault()
         if(this.props.onSubmit){
-        let title = this.state.taskTitle
-        let desc = this.state.taskDescrp
+        const { title, desc } = this.state;
+        // let title = this.state.taskTitle
+        // let desc = this.state.taskDescrp
         this.props.onSubmit(title,desc,event)
         }
-        
+
     }
     render(){
         return(
             <div className="todoinput">
             <h2>Add a new task:</h2>
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <form onSubmit={evt => this.handleSubmit(evt)}>
                 <label>
                     Task:<br/><input type='text' name='title'
                         value={this.state.taskTitle}

@@ -18,12 +18,17 @@ class TodoListCotainer extends Component {
         IniState:PropTypes.array
       }
 
+    state = {
+        onGoingtasks:[],
+        finishedTasks:[]
+    }
+
     constructor(props){
         super(props)
-        this.state={
-            onGoingtasks:[],
-            finishedTasks:[]
-        }
+        // this.state={
+        //     onGoingtasks:[],
+        //     finishedTasks:[]
+        // }
     }
      componentDidMount () {
         this._iniState()
@@ -42,9 +47,9 @@ class TodoListCotainer extends Component {
 
     _loadData(){
         let onGoingtasks = localStorage.getItem('onGoingtasks')
-            onGoingtasks = JSON.parse(onGoingtasks) 
+            onGoingtasks = JSON.parse(onGoingtasks)
         let finishedTasks = localStorage.getItem('finishedTasks')
-            finishedTasks = JSON.parse(finishedTasks) 
+            finishedTasks = JSON.parse(finishedTasks)
         let initState = {onGoingtasks:onGoingtasks,finishedTasks:finishedTasks}
             return initState
     }
@@ -59,7 +64,7 @@ class TodoListCotainer extends Component {
         this._saveTasks('onGoingtasks',onGoingtasks)
         this._saveTasks('finishedTasks',finishedTasks)
 
-        if(this.props.handleChecked)
+        if(this.props.handleChecked) // This won't work
         this.props.handleChecked(index,event)
     }
 
@@ -76,15 +81,15 @@ class TodoListCotainer extends Component {
 
     render(){
         return(
-            <div>                   
+            <div>
                     <OnGoingList
                             onGoingtasks={this.props.onGoingtasks}
                             finishedTasks={this.props.finishedTasks}
                             handleCancel={this.handleCancel.bind(this)}
                             handleChecked={this.handleChecked.bind(this)}/>
-                    <FinishedList 
+                    <FinishedList
                             onGoingtasks={this.props.onGoingtasks}
-                            finishedTasks={this.props.finishedTasks}/>                               
+                            finishedTasks={this.props.finishedTasks}/>
             </div>
         )
     }
@@ -92,9 +97,9 @@ class TodoListCotainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        finishedTasks: state.finishedTasks, 
+        finishedTasks: state.finishedTasks,
        onGoingtasks: state.onGoingtasks
-      
+
     }
   }
 

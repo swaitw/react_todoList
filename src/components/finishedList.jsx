@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 class FinishedList extends Component {
     static defualProps={
-        finishedTasks:[],
-        onGoingtasks:[]
+        finishedTasks: [],
+        onGoingtasks: []
 
     }
 
@@ -16,18 +16,17 @@ class FinishedList extends Component {
     }
 
     render () {
-        const finishedTasks=this.props.finishedTasks
-        const onGoingtasks=this.props.onGoingtasks
+        const {finishedTasks, onGoingtasks} = this.props;
         return(
                 <div>
-                <h2 >Finished Tasks:</h2>                   
-                   {finishedTasks.length} of {(onGoingtasks.length+finishedTasks.length)} {(finishedTasks.length>1)? 'tasks have':'task has'} been done. 
+                <h2 >Finished Tasks:</h2>
+                   {finishedTasks.length} of {(onGoingtasks.length+finishedTasks.length)} {(finishedTasks.length>1)? 'tasks have':'task has'} been done.
                     <div className="finishedtasks" ><ul>
                         {finishedTasks.map((task,i) =>
                         <li key={i}><input type="checkbox" index={i} checked="true" readOnly/>{task.taskTitle}</li>)}
                     </ul>
-                    </div> 
-                </div> 
+                    </div>
+                </div>
         )
     }
 

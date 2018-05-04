@@ -5,10 +5,10 @@ import TodoList from './TodoList'
 
 class TodoApp extends Component {
 
-   
+
     _saveTasks (name,tasks) {
 
-        localStorage.setItem(name,JSON.stringify(tasks))
+        localStorage.setItem(name,JSON.stringify(tasks)) // Why is this a container? did you map props there?
 
     }
     render(){
